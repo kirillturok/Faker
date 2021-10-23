@@ -8,11 +8,12 @@ namespace Faker.BaseTypes
 {
     public class CharGenerator : IGenerator
     {
+        static string Symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         public Type GeneratorType => typeof(Char);
 
         public object Create()
         {
-            return (char)(new Random().Next(char.MinValue,char.MaxValue));
+            return Symbols[new Random().Next(Symbols.Length)];
         }
     }
 }

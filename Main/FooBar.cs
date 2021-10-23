@@ -1,34 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Main
+﻿namespace Main
 {
     class FooBar
     {
-        public Foo he123;
-        public int hello;
-        public float ft;
-        public double ahahah;
-        public long test { get; set; }
+        public Foo fooInBar;
+        public int FBInt;
+        public float floatFB;
+        public double doubleFB;
+        public long longFB;
     }
     class Bar
     {
-        public long pamagitiFaker;
-        public Foo hello;
-        private readonly int some;
-        public long a;
-        public int Some { get; set; }
-        public long Long { get; set; }
-
-        public Bar(int some)
+        public long longB;
+        public Foo fooB;
+        private readonly int intB;
+        public string stringB;
+        public Bar(int longB)
         {
-            this.some = some;
+            this.longB = longB;
         }
 
-        public int ValueSome { get { return this.some; } }
+        public int ValueSome { get { return this.intB; } }
     }
 
     class Foo

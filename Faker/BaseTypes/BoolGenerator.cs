@@ -12,7 +12,7 @@ namespace Faker.BaseTypes
 
         public object Create()
         {
-            return new Random().Next(0,1)==1;
+            return new Random().Next(0,2)==1;
         }
     }
 }

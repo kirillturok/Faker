@@ -8,8 +8,16 @@ namespace Main
     {
         static void Main(string[] args)
         {
-            IGenerator i = new LongGenerator();
-            Console.WriteLine(i.Create());
+            Faker.Faker f = new Faker.Faker();
+            FooBar ff = f.Create<FooBar>();
+
+            Console.WriteLine(ff.ToString());
+
+
+
+
+
+
         }
     }
 }

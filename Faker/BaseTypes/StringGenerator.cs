@@ -15,10 +15,10 @@ namespace Faker.BaseTypes
             Random random = new Random();
             int length = random.Next(byte.MaxValue);
             StringBuilder builder = new StringBuilder();
+            CharGenerator chr = new CharGenerator();
             for(int i = 0; i < length; i++)
             {
-                char symb = (char)(random.Next(char.MinValue, char.MaxValue));
-                builder.Append(symb);
+                builder.Append(chr.Create());
             }
             return builder.ToString();
         }
