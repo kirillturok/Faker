@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Faker
 {
-    class PluginLoader
+    public class PluginLoader
     {
-        private static readonly string PluginPath = Path.Combine(Directory.GetCurrentDirectory(), "plugins");
+        private static readonly string PluginPath = Path.Combine("D:\\5 семестр\\СПП\\2\\Faker\\Main\\bin\\Debug\\net5.0", "plugins");
         private Dictionary<Type, IGenerator> generators;
 
         public PluginLoader(Dictionary<Type, IGenerator> gen)
@@ -20,18 +20,18 @@ namespace Faker
 
         public void LoadPluginGenerators()
         {
-            Console.WriteLine("11111111111111");
+            //Console.WriteLine("11111111111111");
             Console.WriteLine(PluginPath);
             if (!Directory.Exists(PluginPath))
                 return;
-            Console.WriteLine("2222222222222222");
+            //Console.WriteLine("2222222222222222");
 
             string[] files = Directory.GetFiles(PluginPath, "*.dll");
-            Console.WriteLine(PluginPath);
+            //Console.WriteLine(PluginPath);
 
             foreach (var file in files)
             {
-                Console.WriteLine("111"+file);
+                //Console.WriteLine("111"+file);
                 Assembly assembly = Assembly.LoadFrom(file);
                 LoadPluginGenerator(assembly);
             }
