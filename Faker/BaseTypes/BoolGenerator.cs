@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Faker.BaseTypes
 {
-    class BoolGenerator : IGenerator
+    public class BoolGenerator : IGenerator
     {
         public Type GeneratorType => typeof(bool);
 

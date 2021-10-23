@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Faker.BaseTypes
 {
-    public class CharGenerator : IGenerator
+    public class DoubleGenerator : IGenerator
     {
-        public Type GeneratorType => typeof(Char);
+        public Type GeneratorType => typeof(Double);
 
         public object Create()
         {
-            return (char)(new Random().Next(char.MinValue,char.MaxValue));
+            return new Random().NextDouble();
         }
     }
 }

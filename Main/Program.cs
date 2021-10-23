@@ -8,8 +8,8 @@ namespace Main
     {
         static void Main(string[] args)
         {
-            IGenerator i = new ByteGenerator();
-            Console.WriteLine(i.GeneratorType);
+            IGenerator i = new LongGenerator();
+            Console.WriteLine(i.Create());
         }
     }
 }
