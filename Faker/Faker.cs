@@ -27,7 +27,8 @@ namespace Faker
                 { typeof(short), new ShortGenerator()},
                 { typeof(string), new StringGenerator()},
             };
-
+            PluginLoader loader = new PluginLoader(generators);
+            loader.LoadPluginGenerators();
             circularReferencesEncounter = new List<Type>();
         }
 

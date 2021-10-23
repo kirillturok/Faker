@@ -20,13 +20,18 @@ namespace Faker
 
         public void LoadPluginGenerators()
         {
+            Console.WriteLine("11111111111111");
+            Console.WriteLine(PluginPath);
             if (!Directory.Exists(PluginPath))
                 return;
+            Console.WriteLine("2222222222222222");
 
             string[] files = Directory.GetFiles(PluginPath, "*.dll");
+            Console.WriteLine(PluginPath);
 
             foreach (var file in files)
             {
+                Console.WriteLine("111"+file);
                 Assembly assembly = Assembly.LoadFrom(file);
                 LoadPluginGenerator(assembly);
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using Faker;
 using Faker.BaseTypes;
 
@@ -9,7 +10,8 @@ namespace Main
         static void Main(string[] args)
         {
             Faker.Faker f = new Faker.Faker();
-            FooBar ff = f.Create<FooBar>();
+            Bar ff = f.Create<Bar>();
+            Console.WriteLine(JsonConvert.SerializeObject(ff,Formatting.Indented));
 
             Console.WriteLine(ff.ToString());
 

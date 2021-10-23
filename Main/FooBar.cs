@@ -1,29 +1,33 @@
 ﻿namespace Main
 {
-    class FooBar
-    {
-        public Foo fooInBar;
-        public int FBInt;
-        public float floatFB;
-        public double doubleFB;
-        public long longFB;
-    }
     class Bar
     {
-        public long longB;
-        public Foo fooB;
-        private readonly int intB;
-        public string stringB;
-        public Bar(int longB)
+        public long longBar;
+        public Foo fooBar;
+        private readonly int intBar;
+        public long a;
+        public int Some { get; set; }
+        public long Long { get; set; }
+
+        public Bar(int intBar)
         {
-            this.longB = longB;
+            this.intBar = intBar;
         }
 
-        public int ValueSome { get { return this.intB; } }
+        public int ValueSome { get { return this.intBar; } }
     }
 
     class Foo
     {
-        public Bar bar;
+        public Some he123;
+        public int intFoo;
+        public float floatFoo;
+        public double doubleFoo;
+        public long test { get; set; }
     }
+
+    class Some
+    {
+        public Bar bar;
+    }   
 }
