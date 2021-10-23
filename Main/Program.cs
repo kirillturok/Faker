@@ -1,4 +1,6 @@
 ﻿using System;
+using Faker;
+using Faker.BaseTypes;
 
 namespace Main
 {
@@ -6,7 +8,8 @@ namespace Main
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Worldddddddddddddddddddd!");
+            IGenerator i = new ByteGenerator();
+            Console.WriteLine(i.GeneratorType);
         }
     }
 }
