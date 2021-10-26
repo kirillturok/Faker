@@ -57,7 +57,7 @@ namespace Faker
             if (TryList(type, out instance))
                 return instance;
 
-            if (TryGenerateUDF(type, out instance))
+            if (TryGenerateCls(type, out instance))
                 return instance;
 
             return default;
@@ -137,7 +137,7 @@ namespace Faker
         }
 
 
-        private bool TryGenerateUDF(Type type, out object instance)
+        private bool TryGenerateCls(Type type, out object instance)
         {
             instance = null;
 

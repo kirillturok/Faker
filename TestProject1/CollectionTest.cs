@@ -16,10 +16,10 @@ namespace TestProject1
             Faker.Faker faker = new Faker.Faker();
             List<int> list = faker.Create<List<int>>();
             ICollection<double> icoll = faker.Create<ICollection<double>>();
-            List<List<bool>> difficult = faker.Create<List<List<bool>>>();
+            List<List<char>> difficult = faker.Create<List<List<char>>>();
             Assert.AreEqual(list == null, false, "List list hasn't been initialized.");
-            bool b = difficult[0][0];
-            Assert.AreEqual(b == default(bool), false, "Item in List of Lists hasn't been initialized.");
+            char b = difficult[0][0];
+            Assert.AreEqual(b == default(char), false, "Item in List of Lists hasn't been initialized.");
         }
     }
 }

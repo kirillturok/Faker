@@ -6,6 +6,7 @@ namespace Main
     {
         public long longBar;
         public Foo fooBar;
+        public bool bbb;
         private readonly int intBar;
         public long a;
         public int Some { get; set; }
