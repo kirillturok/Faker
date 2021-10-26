@@ -1,4 +1,6 @@
-﻿namespace Main
+﻿using System.Collections.Generic;
+
+namespace Main
 {
     class Bar
     {
@@ -21,6 +23,7 @@
     {
         public Some he123;
         public int intFoo;
+        public List<int> list;
         public float floatFoo;
         public double doubleFoo;
         public long test { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Faker.BaseTypes;
 
@@ -51,6 +52,9 @@ namespace Faker
                 return instance;
 
             if (TryGenerateArray(type, out instance))
+                return instance;
+
+            if (TryList(type, out instance))
                 return instance;
 
             if (TryGenerateUDF(type, out instance))
@@ -108,6 +112,36 @@ namespace Faker
             return true;
         }
 
+        private bool TryList(Type type,out object instance)
+        {
+            instance = null;
+            if (!type.IsGenericType)
+                return false;
+
+            if (!(type.GetGenericTypeDefinition() == typeof(List<>)))
+                return false;
+
+            var innerTypes = type.GetGenericArguments();
+            Type gType = innerTypes[0];
+            //Console.WriteLine(gType.Name);
+            int count = new Random().Next(20);
+            instance = Activator.CreateInstance(type);
+            object[] arr = new object[1];
+            for (int i = 0; i < count; ++i)
+            {
+                arr[0] = Create(gType);
+                type.GetMethod("Add").Invoke(instance, arr);
+            }
+
+            return true;
+        }
+
+        protected MethodInfo GetGenericCreate(Type paramType)
+        {
+            MethodInfo method = typeof(IFaker).GetMethods().Single(m => m.Name == "Create" && m.IsGenericMethodDefinition);
+            method = method.MakeGenericMethod(paramType);
+            return method;
+        }
 
 
         private bool TryGenerateUDF(Type type, out object instance)
