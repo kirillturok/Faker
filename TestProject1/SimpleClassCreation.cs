@@ -23,8 +23,8 @@ namespace TestProject1
     {
         public int _int;
         public byte _byte;
-        public bool _bool;
         public string _string;
+        public bool _bool;
         public B b;
 
         public A(string str)

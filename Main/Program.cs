@@ -12,7 +12,7 @@ namespace Main
         {
             Faker.Faker f = new Faker.Faker();
             Bar ff = f.Create<Bar>();
-            //List<int> ff = f.Create<List<int>>();
+            //ICollection<int> ff = f.Create<List<int>>();
             Console.WriteLine(JsonConvert.SerializeObject(ff,Formatting.Indented));
 
             //Console.WriteLine(ff.ToString());

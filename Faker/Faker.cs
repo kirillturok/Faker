@@ -124,7 +124,7 @@ namespace Faker
             var innerTypes = type.GetGenericArguments();
             Type gType = innerTypes[0];
             //Console.WriteLine(gType.Name);
-            int count = new Random().Next(20);
+            int count = new Random().Next(1,20);
             instance = Activator.CreateInstance(type);
             object[] arr = new object[1];
             for (int i = 0; i < count; ++i)
@@ -134,13 +134,6 @@ namespace Faker
             }
 
             return true;
-        }
-
-        protected MethodInfo GetGenericCreate(Type paramType)
-        {
-            MethodInfo method = typeof(IFaker).GetMethods().Single(m => m.Name == "Create" && m.IsGenericMethodDefinition);
-            method = method.MakeGenericMethod(paramType);
-            return method;
         }
 
 
