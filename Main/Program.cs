@@ -11,8 +11,8 @@ namespace Main
         static void Main(string[] args)
         {
             Faker.Faker f = new Faker.Faker();
-            Bar ff = f.Create<Bar>();
-            //ICollection<int> ff = f.Create<List<int>>();
+            //Bar ff = f.Create<Bar>();
+            User ff = f.Create<User>();
             Console.WriteLine(JsonConvert.SerializeObject(ff,Formatting.Indented));
 
             //Console.WriteLine(ff.ToString());
@@ -22,6 +22,38 @@ namespace Main
 
 
 
+        }
+    }
+
+    class User
+    {
+        public string name;
+        public int age {get; set; }
+        float money = 10.05f;
+        //public List<Dog> dogs;
+        public Dog dog;
+        public Profile profile;
+
+    }
+
+    class Dog
+    {
+        public String name;
+        public User owner;
+
+    }
+
+    class Profile
+    {
+        public String address;
+        public Profile()
+        {
+
+        }
+        public Profile(string addr)
+        {
+            //throw new Exception();
+            //address = addr;
         }
     }
 }

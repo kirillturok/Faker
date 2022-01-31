@@ -29,7 +29,7 @@ namespace Faker.BaseTypes
             if (elementType == null)
                 return null;
 
-            var length = random.Next(0, 9);
+            var length = random.Next(1, 9);
             var result = Array.CreateInstance(elementType, length);
 
             for (var i = 0; i < length; i++)

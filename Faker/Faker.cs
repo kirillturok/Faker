@@ -9,7 +9,9 @@ namespace Faker
 {
     public class Faker : IFaker
     {
-        private readonly List<Type> circularReferencesEncounter;
+        int circularLevel = 3;
+
+        private readonly Dictionary<Type,int> circularReferencesEncounter;
 
         private Dictionary<Type, IGenerator> generators;
 
@@ -30,7 +32,7 @@ namespace Faker
             };
             PluginLoader loader = new PluginLoader(generators);
             loader.LoadPluginGenerators();
-            circularReferencesEncounter = new List<Type>();
+            circularReferencesEncounter = new Dictionary<Type,int>();
         }
 
         public T Create<T>()
@@ -144,24 +146,36 @@ namespace Faker
             if (!type.IsClass && !type.IsValueType)
                 return false;
 
-            if (circularReferencesEncounter.Contains(type))
+            if (circularReferencesEncounter.ContainsKey(type)&& circularReferencesEncounter[type] == circularLevel)
             {
+                circularReferencesEncounter.Remove(type);
                 instance = default;
                 return true;
             }
 
-            circularReferencesEncounter.Add(type);
+            if (!circularReferencesEncounter.ContainsKey(type))
+                circularReferencesEncounter.Add(type, 0);
+
+            
+
+            /*if (circularReferencesEncounter.Contains(type))
+            {
+                instance = default;
+                return true;
+            }*/
+
+            circularReferencesEncounter[type] = circularReferencesEncounter[type] + 1; ;
 
             if (TryConstruct(type, out instance))
             {
                 GenerateFillProps(instance, type);
                 GenerateFillFields(instance, type);
 
-                circularReferencesEncounter.Remove(type);
-
+                //if (circularReferencesEncounter[type] == 3) circularReferencesEncounter.Remove(type);
+                //else circularReferencesEncounter[type] = circularReferencesEncounter[type] - 1;
                 return true;
             }
-
+            //if (circularReferencesEncounter[type] == circularLevel) circularReferencesEncounter.Remove(type);
             return false;
         }
 
@@ -224,11 +238,14 @@ namespace Faker
         private void GenerateFillFields(object instance, Type type)
         {
             var fields = type.GetFields();
+            
 
             foreach (var field in fields)
             {
-                if (!field.IsPublic)
+                Console.WriteLine(field.Name);
+                if (field.IsPrivate)
                     continue;
+
 
                 field.SetValue(instance, Create(field.FieldType));
             }
